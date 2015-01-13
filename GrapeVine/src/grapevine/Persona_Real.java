@@ -12,6 +12,7 @@ public class Persona_Real implements Persona{
     ArrayList <Persona> persona;
     Proxy proxy;
 
+    // CONSTRUCTOR
     public Persona_Real(String nombreUsuario, int ip, int id, ArrayList<Reunion> reunion, ArrayList<Persona> persona, Proxy proxy) {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
@@ -21,6 +22,7 @@ public class Persona_Real implements Persona{
         this.proxy = proxy;
     }
 
+    // GETTERS & SETTERS
     public String getNombreUsuario() {
         return nombreUsuario;
     }

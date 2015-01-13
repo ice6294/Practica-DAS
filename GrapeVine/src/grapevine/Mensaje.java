@@ -9,12 +9,14 @@ public class Mensaje {
     String nombreUsuario;
     Date hora;
 
+    // CONSTRUCTOR
     public Mensaje(String contenido, String nombreUsuario) {
         this.contenido = contenido;
         this.nombreUsuario = nombreUsuario;
         this.hora = new Date();
     }
 
+    // GETTERS & SETTERS
     public String getContenido() {
         return contenido;
     }
