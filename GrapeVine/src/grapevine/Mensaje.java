@@ -39,5 +39,4 @@ public class Mensaje {
         this.hora = hora;
     }
 
-    //Prueba 3
 }
