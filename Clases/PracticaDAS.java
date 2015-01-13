@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package grapevine;
+package practicadas;
 
 /**
  *
  * @author Soraya
  */
-public class GrapeVine {
+public class PracticaDAS {
 
     /**
      * @param args the command line arguments

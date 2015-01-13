@@ -1,5 +1,5 @@
 
-package grapevine;
+package practicadas;
 
 
 public interface Persona {
