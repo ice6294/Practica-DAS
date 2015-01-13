@@ -9,10 +9,10 @@ public class Mensaje {
     String nombreUsuario;
     Date hora;
 
-    public Mensaje(String contenido, String nombreUsuario, Date hora) {
+    public Mensaje(String contenido, String nombreUsuario) {
         this.contenido = contenido;
         this.nombreUsuario = nombreUsuario;
-        this.hora = hora;
+        this.hora = new Date();
     }
 
     public String getContenido() {
@@ -40,5 +40,6 @@ public class Mensaje {
     }
     
     //Hola caracola
+    //hola caracolo
     
 }
