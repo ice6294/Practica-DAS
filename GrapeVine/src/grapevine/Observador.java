@@ -29,10 +29,10 @@ public class Observador {
     public ArrayList<Observador> getObservador() {
         return observador;
     }
-/*
+
     public void setObservador(ArrayList<Observador> observador) {
         this.observador = observador;
-    }*/
+    }
     
     
 }
