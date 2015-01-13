@@ -40,7 +40,6 @@ public class Mensaje {
     }
 
 
-    //Prueba 3
-    //No se ha quitado prueba 3?
+   
 
 }
