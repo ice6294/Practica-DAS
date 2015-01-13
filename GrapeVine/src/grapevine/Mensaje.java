@@ -40,4 +40,5 @@ public class Mensaje {
     public void setHora(Date hora) {
         this.hora = hora;
     }
+    
 }
