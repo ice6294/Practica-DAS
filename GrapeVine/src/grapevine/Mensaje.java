@@ -38,5 +38,5 @@ public class Mensaje {
     public void setHora(Date hora) {
         this.hora = hora;
     }
-    //Esto es una prueba
+
 }
