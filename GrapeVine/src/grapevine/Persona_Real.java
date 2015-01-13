@@ -76,5 +76,4 @@ public class Persona_Real implements Persona{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
 }

@@ -35,6 +35,5 @@ public class Observador {
     public void setObservador(ArrayList<Observador> observador) {
         this.observador = observador;
     }
-    
-    
+
 }

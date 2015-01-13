@@ -41,5 +41,4 @@ public class Pizarra_Distribuida {
         this.Persona = Persona;
     }
     
-    
 }

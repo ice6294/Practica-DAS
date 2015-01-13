@@ -41,7 +41,4 @@ public class Mensaje {
         this.hora = hora;
     }
 
-
-   
-
 }
