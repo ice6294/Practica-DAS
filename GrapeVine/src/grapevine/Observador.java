@@ -17,6 +17,22 @@ public class Observador {
     public Observador(ArrayList<Persona> persona) {
         this.persona = persona;
     }
+
+    public ArrayList<Persona> getPersona() {
+        return persona;
+    }
+
+    public void setPersona(ArrayList<Persona> persona) {
+        this.persona = persona;
+    }
+
+    public ArrayList<Observador> getObservador() {
+        return observador;
+    }
+
+    public void setObservador(ArrayList<Observador> observador) {
+        this.observador = observador;
+    }
     
     
 }

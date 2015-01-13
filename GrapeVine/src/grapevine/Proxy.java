@@ -19,6 +19,46 @@ public class Proxy implements Persona{
         this.reunion = reunion;
         this.persona = persona;
     }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public int getIp() {
+        return ip;
+    }
+
+    public void setIp(int ip) {
+        this.ip = ip;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<Reunion> getReunion() {
+        return reunion;
+    }
+
+    public void setReunion(ArrayList<Reunion> reunion) {
+        this.reunion = reunion;
+    }
+
+    public ArrayList<Persona> getPersona() {
+        return persona;
+    }
+
+    public void setPersona(ArrayList<Persona> persona) {
+        this.persona = persona;
+    }
     
     @Override
     public void reservarHorario() {
