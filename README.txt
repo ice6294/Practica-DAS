@@ -1,2 +1,0 @@
-# Practica-DAS
-Ole ole
