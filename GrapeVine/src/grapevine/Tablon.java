@@ -20,8 +20,7 @@ public class Tablon {
         this.mensajes = mensajes;
     }
     
-    
-    
-    
-    
+    public void mostrarMensajes(){
+        this.mensajes.get(mensajes.size()).imprimeMensaje();
+    }
 }
