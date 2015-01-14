@@ -41,4 +41,9 @@ public class Mensaje {
         this.hora = hora;
     }
     
+    public void imprimeMensaje(){
+        System.out.println("-- " + this.nombreUsuario + " " + this.hora + " --");
+        System.out.println(this.contenido);
+    }
+    
 }
