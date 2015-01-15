@@ -6,13 +6,13 @@ import java.util.Date;
 public class Mensaje {
     
     String contenido;
-    String nombreUsuario;
+    String autor;
     Date hora;
 
     // CONSTRUCTOR
-    public Mensaje(String contenido, String nombreUsuario) {
+    public Mensaje(String contenido, String autor) {
         this.contenido = contenido;
-        this.nombreUsuario = nombreUsuario;
+        this.autor = autor;
         this.hora = new Date();
     }
 
@@ -26,11 +26,11 @@ public class Mensaje {
     }
 
     public String getNombreUsuario() {
-        return nombreUsuario;
+        return autor;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombreUsuario(String autor) {
+        this.autor = autor;
     }
 
     public Date getHora() {
@@ -38,7 +38,10 @@ public class Mensaje {
     }
 
     public void setHora(Date hora) {
-        this.hora = hora;
+        this.hora = hora;  
     }
-    
+    public void imprimeMensaje(){
+        System.out.println("-- " + this.autor + " " + this.hora + " --");
+        System.out.println(this.contenido);
+    }
 }
