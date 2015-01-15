@@ -80,20 +80,17 @@ public class Reunion {
 
     public void setActiva() {
         java.util.Date fechaSistema=new Date();
-        if ((fechaSistema.compareTo(this.fecha_ini)>=0) && (fechaSistema.compareTo(this.fecha_fin)==-1)){
-            this.activa = true;
-        } else {
-            this.activa = false;
-        }
+        this.activa = (fechaSistema.compareTo(this.fecha_ini)>=0) && (fechaSistema.compareTo(this.fecha_fin)==-1);
     }
     
     
     // METODOS
-    public void escribirMensaje(Mensaje mensaje){
-        this.tablon.add(mensaje);
+    public void escribirMensaje(Mensaje m){
+        escribir(m);
+        this.observador.actualizaRestoParticipantes(m);
     }
     
-    public void finalizarReunion(){
-        
+    public void escribir(Mensaje m){
+        this.tablon.add(m);
     }
 }
