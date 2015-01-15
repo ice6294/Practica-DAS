@@ -15,31 +15,31 @@ public class Persona_Real implements Persona, Serializable{
 
     String nombreUsuario;   //nombre del usuario es único y no puede repetirse
     int ip; //entero que simula la ip del usuario
-    int id; //contraseña única para identificar al usuario
+    int password; //contraseña única para passwordentificar al usuario
     ArrayList <Reunion> reunion;
-    ArrayList <Persona> personas;
+    ArrayList <Persona> amigos;//en el uml llamado "personas"
     Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
     // CONSTRUCTOR
-    public Persona_Real(String nombreUsuario, int ip, int id, ArrayList<Reunion> reunion, ArrayList<Persona> persona, Proxy proxy)  {
+    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Reunion> reunion, ArrayList<Persona> persona, Proxy proxy)  {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
-        this.id = id;
+        this.password = password;
         this.reunion = reunion;
-        this.personas = persona;
+        this.amigos = persona;
         this.proxy = proxy;
     }
     public Persona_Real(Persona_Real pr){
         this.nombreUsuario = pr.getNombreUsuario();
         this.ip = pr.getIp();
-        this.id = pr.getIp();
+        this.password = pr.getIp();
         this.reunion = pr.getReunion();
-        this.personas = pr.getPersonas();
+        this.amigos = pr.getPersonas();
         this.proxy = pr.getProxy();
     }
     
     public boolean GuardarDatosFichero(Persona_Real pr) throws IOException{
-        String fichero = "personasRegistradas.txt";
+        String fichero = "amigosRegistradas.txt";
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
         Persona_Real p=new Persona_Real(pr);
         BufferedReader br = null;
@@ -100,11 +100,11 @@ public class Persona_Real implements Persona, Serializable{
     }
 
     public int getId() {//Método que desaparecerá cuando se termine el periodo de implementación
-        return id;
+        return password;
     }
 
-    public void setId(int id) {// recordar seguridad y confirmación
-        this.id = id;
+    public void setId(int password) {// recordar segurpasswordad y confirmación
+        this.password = password;
     }
 
     public ArrayList<Reunion> getReunion() {
@@ -116,11 +116,11 @@ public class Persona_Real implements Persona, Serializable{
     }
 
     public ArrayList<Persona> getPersonas() {
-        return personas;
+        return amigos;
     }
 
-    public void setPersonas(ArrayList<Persona> personas) {
-        this.personas = personas;
+    public void setPersonas(ArrayList<Persona> amigos) {
+        this.amigos = amigos;
     }
 
     public Proxy getProxy() {
@@ -136,7 +136,7 @@ public class Persona_Real implements Persona, Serializable{
     }
     
     public boolean EliminarContacto(Persona p){//recordar E/S
-       return this.personas.remove(p);
+       return this.amigos.remove(p);
        //falta actualizar ficheros
     }
     
@@ -211,7 +211,7 @@ public class Persona_Real implements Persona, Serializable{
 
     @Override
     public String toString() {
-        return "Persona_Real{" + "nombreUsuario=" + nombreUsuario + ", ip=" + ip + ", id=" + id + ", reunion=" + reunion + ", personas=" + personas + ", proxy=" + proxy + '}';
+        return "Persona_Real{" + "nombreUsuario=" + nombreUsuario + ", ip=" + ip + ", password=" + password + ", reunion=" + reunion + ", amigos=" + amigos + ", proxy=" + proxy + '}';
     }
     
     
