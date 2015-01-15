@@ -40,8 +40,8 @@ public class Mensaje {
     public void setHora(Date hora) {
         this.hora = hora;  
     }
-    public void imprimeMensaje(){
-        System.out.println("-- " + this.autor + " " + this.hora + " --");
-        System.out.println(this.contenido);
+    @Override
+    public String toString(){
+        return ("-- " + this.autor + " " + this.hora + " --\n" + this.contenido);
     }
 }
