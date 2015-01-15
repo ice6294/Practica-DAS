@@ -171,12 +171,23 @@ public class Persona_Real implements Persona, Serializable{
         return false;
     }
     
+    public boolean escribir(Mensaje m){ /*devuelve true si se ha podido escribir y false si no 
+            (si en el momento en el que se llama a la función no hay ninguna reunión prevista, 
+            se devuelve false y punto, si hay una reunión, se elije, se la llama y se le envía el mensaje*/
+        
+        //una vez elegida la pizarra que estuviera activa se haría
+        Pizarra_Distribuida piz = new Pizarra_Distribuida(null, null, amigos);
+        piz.getReunion().escribirMensaje(m);
+        
+        
+        System.out.println("Te metes el mensaje por el culo imbécil ;)");
+        return false;
+    }
+    
 //    public void CrearReunion(){ // me falta añadir los atributos necesarios para una reunión
 //        pizarras nueva= new Reunion();// me falta llamar al constructor de forma adecuada metienndo los atributos correctos
 //    }
     
-    
-
     @Override
     public int hashCode() {
         int hash = 7;

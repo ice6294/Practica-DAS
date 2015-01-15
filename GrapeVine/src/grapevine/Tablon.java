@@ -21,22 +21,16 @@ public class Tablon {
     public void setMensajes(ArrayList<Mensaje> mensajes) {
         this.mensajes = mensajes;
     }
-    
-    public void mostrarMensaje(Mensaje mensaje){
-        mensaje.toString();
-    }
-    
+ 
     // METODOS
-    public void add(Mensaje mensaje){
-        this.mostrarMensaje(mensaje);
-        this.mensajes.add(mensaje);
+    public void addMensaje(Mensaje mensaje){
+        System.out.println(mensaje.toString()); //imprimimos
+        this.mensajes.add(mensaje); //y guardamos
     }
     
     public void mostrarTodosMensajes(){
-        
-        for (Mensaje mensaje : this.mensajes) {
-            mensaje.toString();
+        for (Mensaje mensaje : this.mensajes) {//Imprimimos todos los mensajes
+            System.out.println(mensaje.toString());
         }
-        
     }
 }

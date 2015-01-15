@@ -17,25 +17,23 @@ public class Observador {
 
     // GETTERS & SETTERS
 
-    public ArrayList<Observador> getObservador() {
+    public ArrayList<Observador> getRestoParticipantes() {
         return restoParticipantes;
     }
 
-    public void setObservador(ArrayList<Observador> restoParticipantes) {
+    public void setRestoParticipantes(ArrayList<Observador> restoParticipantes) {
         this.restoParticipantes = restoParticipantes;
     }
     
     //FUNCIONES DE PASO DE MENSAJE
     
     public void actualizaRestoParticipantes(Mensaje m){
-        
         for (int i=0; i<restoParticipantes.size();i++){
             restoParticipantes.get(i).actualizarme(m);
         }
-        
     }
     
     public void actualizarme(Mensaje m){
-        this.reunion.escribir(m);
+        this.reunion.guardar(m);
     }
 }

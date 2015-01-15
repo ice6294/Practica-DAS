@@ -38,9 +38,6 @@ public class Mensaje {
         return hora;
     }
 
-//    public void setHora(Date hora) {
-//        this.hora = hora;  
-//    }
     @Override
     public String toString(){
         return ("-- " + this.autor + " " + this.hora + " --\n" + this.contenido);

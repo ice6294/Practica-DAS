@@ -86,11 +86,11 @@ public class Reunion {
     
     // METODOS
     public void escribirMensaje(Mensaje m){
-        escribir(m);
+        guardar(m);
         this.observador.actualizaRestoParticipantes(m);
     }
     
-    public void escribir(Mensaje m){
-        this.tablon.add(m);
+    public void guardar(Mensaje m){
+        this.tablon.addMensaje(m);
     }
 }
