@@ -136,7 +136,7 @@ public class Persona_Real implements Persona, Serializable{
         this.pizarras.add(evento);
     }
     
-    public boolean EliminarContacto(Persona p){//recordar E/S
+    public boolean EliminarContacto(Persona_Real p){//recordar E/S
        return this.amigos.remove(p);
        //falta actualizar ficheros
     }
@@ -172,17 +172,14 @@ public class Persona_Real implements Persona, Serializable{
         return false;
     }
     
-    public boolean escribir(Mensaje m){ /*devuelve true si se ha podido escribir y false si no 
-            (si en el momento en el que se llama a la función no hay ninguna reunión prevista, 
-            se devuelve false y punto, si hay una reunión, se elije, se la llama y se le envía el mensaje*/
-        
-        //una vez elegida la pizarra que estuviera activa se haría
-        //Pizarra_Distribuida piz = new Pizarra_Distribuida(amigos);
-        //piz.getReunion().escribirMensaje(m);
-        
-        
-        System.out.println("Te metes el mensaje por el culo imbécil ;)");
-        return false;
+    public boolean escribir(Mensaje m, int id){ 
+        if (!EnReunion()){
+            System.out.println("Te metes el mensaje por el culo imbécil ;)");
+            return false;
+        } else{ //va, que estás en reunión, te dejo escribir
+            this.getPizarra(id).getReunion().escribirMensaje(m);
+            return true;
+        }
     }
     
     public boolean GuardarDatosFichero(Persona_Real pr) throws IOException{
@@ -259,10 +256,10 @@ public class Persona_Real implements Persona, Serializable{
     }
     
     
-    @Override
-    public void reservarHorario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public void reservarHorario() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     @Override
     public String toString() {

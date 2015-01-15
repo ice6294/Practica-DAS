@@ -60,8 +60,9 @@ public class Reunion {
     }
 
     public void setActiva() {
-        java.util.Date fechaSistema=new Date();
-        this.activa = (fechaSistema.compareTo(this.fecha_ini)>=0) && (fechaSistema.compareTo(this.fecha_fin)==-1);
+//        java.util.Date fechaSistema=new Date();
+//        this.activa = (fechaSistema.compareTo(this.fecha_ini)>=0) && (fechaSistema.compareTo(this.fecha_fin)==-1);
+        this.activa=true;   // TEMPORAL
     }
     
     

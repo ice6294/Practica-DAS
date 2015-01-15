@@ -49,10 +49,10 @@ public class Proxy implements Persona, Serializable{
 //        return true;//por defecto
 //    }
     
-    @Override
-    public void reservarHorario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public void reservarHorario() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
     
 }

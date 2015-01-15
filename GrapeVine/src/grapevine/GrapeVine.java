@@ -35,6 +35,17 @@ public class GrapeVine {
                 
         Mensaje m = new Mensaje("Hola hola", "Federico");
         p1.getPizarras().get(0).getReunion().escribirMensaje(m);
+        
+        String entradaTeclado = "";
+        Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
+        
+        int id=666;
+        System.out.println("Comienza la conversación:");
+        while(true){
+            System.out.print("~ ");
+            entradaTeclado = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
+            m = new Mensaje(entradaTeclado,"Luis");
+            p1.escribir(m,id);
+        }
     }
-    
 }

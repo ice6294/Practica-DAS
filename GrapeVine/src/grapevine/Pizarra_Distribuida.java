@@ -8,12 +8,12 @@ public class Pizarra_Distribuida {
     int id;
     Reunion reunion;
     Observador observador;
-    ArrayList <Persona_Real> participantes;
+//    ArrayList <Persona_Real> participantes;
 
     // CONSTRUCTOR
-    public Pizarra_Distribuida(int id, ArrayList<Persona_Real> personas, Date ini, Date fin) {
+    public Pizarra_Distribuida(int id, ArrayList<Persona_Real> participantes, Date ini, Date fin) {
         this.id=id;
-        this.reunion = new Reunion(personas, ini, fin);
+        this.reunion = new Reunion(participantes, ini, fin);
         this.observador = new Observador(reunion);
         this.reunion.setObservador(observador);
     }
@@ -40,12 +40,12 @@ public class Pizarra_Distribuida {
         this.observador = observador;
     }
 
-    public ArrayList<Persona_Real> getParticipantes() {
-        return participantes;
-    }
-
-    public void setParticipantes(ArrayList<Persona_Real> participantes) {
-        this.participantes = participantes;
-    }
+//    public ArrayList<Persona_Real> getParticipantes() {
+//        return participantes;
+//    }
+//
+//    public void setParticipantes(ArrayList<Persona_Real> participantes) {
+//        this.participantes = participantes;
+//    }
     
 }
