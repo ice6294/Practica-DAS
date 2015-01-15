@@ -9,6 +9,7 @@ public class Observador {
     ArrayList <Persona> persona;
     ArrayList <Observador> observador;
 
+    // CONSTRUCTOR
     public Observador(ArrayList<Persona> persona, ArrayList<Observador> observador) {
         this.persona = persona;
         this.observador = observador;
@@ -18,6 +19,7 @@ public class Observador {
         this.persona = persona;
     }
 
+    // GETTERS & SETTERS
     public ArrayList<Persona> getPersona() {
         return persona;
     }
@@ -33,6 +35,5 @@ public class Observador {
     public void setObservador(ArrayList<Observador> observador) {
         this.observador = observador;
     }
-    
-    
+
 }

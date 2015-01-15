@@ -1,14 +1,15 @@
 
 package grapevine;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Proxy implements Persona{
+public class Proxy implements Persona, Serializable{
     
-    String nombreUsuario;
-    int ip;
-    int id;
+    String nombreUsuario;   //nombre del usuario es único y no puede repetirse
+    int ip; //entero que simula la ip del usuario
+    int id; //contraseña única para identificar al usuario
     ArrayList <Reunion> reunion;
     ArrayList <Persona> persona;
 
@@ -36,7 +37,7 @@ public class Proxy implements Persona{
         this.ip = ip;
     }
 
-    public int getId() {
+    public int getId() {//Método que desaparecerá cuando se termine el periodo de implementación
         return id;
     }
 
@@ -59,6 +60,25 @@ public class Proxy implements Persona{
     public void setPersona(ArrayList<Persona> persona) {
         this.persona = persona;
     }
+    
+//    public boolean GestorReunion(){// recordar crear en un fichero local llamado reuniones.txt
+//            //mirar que todos las personas de esa reuniones.txt tienen libre una determinada fechaini
+//            // en caso correcto para todas las personas de la reunion llamar a confirmacion de reunión y esperar en un bucle hasta obtener todos true
+//             return false;// en caso de recibir un false break en el bucle y enviar false 
+//    }
+    
+//    public boolean ComprobarAgenda(){//QUÉ COJONES ES ESTO ¿?¿?¿?¿?¿?¿?¿?
+//        
+//    }
+
+//    public boolean SolicitarReserva(){
+//        //supongo que en caso de que ComprobarAgenda() sea true entonces será true y esto es lo que se llamará dentro de la clase persona
+//        return true;//por defecto
+//    }
+    
+//    public boolean Reservado(){//Agregar reunión al array de reuniones
+//        return false;//por defecto
+//    }
     
     @Override
     public void reservarHorario() {

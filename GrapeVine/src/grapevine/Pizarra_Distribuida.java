@@ -9,12 +9,14 @@ public class Pizarra_Distribuida {
     Observador observador;
     ArrayList <Persona> Persona;
 
+    // CONSTRUCTOR
     public Pizarra_Distribuida(Reunion reunion, Observador observador, ArrayList<Persona> Persona) {
         this.reunion = reunion;
         this.observador = observador;
         this.Persona = Persona;
     }
 
+    // GETTERS & SETTERS
     public Reunion getReunion() {
         return reunion;
     }
@@ -38,6 +40,5 @@ public class Pizarra_Distribuida {
     public void setPersona(ArrayList<Persona> Persona) {
         this.Persona = Persona;
     }
-    
     
 }
