@@ -4,9 +4,7 @@ package grapevine;
 import java.util.*;
 
 public class Reunion {
-    
-    int contador;
-    int id;
+    ArrayList<Persona_Real> participantes;
     Date fecha_ini; // faltan getters y setters
     Date fecha_fin; // faltan getters y setters
     boolean activa;
@@ -14,32 +12,16 @@ public class Reunion {
     Observador observador;
 
     // CONSTRUCTOR
-    public Reunion(int contador, int id, Date fecha_ini, Date fecha_fin, Tablon tablon, Observador observador) {
-        this.contador = contador;
-        this.id = id;
+    public Reunion(ArrayList<Persona_Real> participantes, Date fecha_ini, Date fecha_fin) {
+        this.participantes=participantes;
         this.fecha_ini=fecha_ini;
         this.fecha_fin=fecha_fin;
         this.activa=false;
-        this.tablon = tablon;
-        this.observador = observador;
+        this.tablon = new Tablon();
+        //this.observador = new Observador(observadores, this);
     }
 
     // GETTERS & SETTERS
-    public int getContador() {
-        return contador;
-    }
-
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Tablon getTablon() {
         return tablon;
@@ -92,5 +74,9 @@ public class Reunion {
     
     public void guardar(Mensaje m){
         this.tablon.addMensaje(m);
+    }
+
+    private ArrayList<Observador> conseguirObservadores() {
+        return null;
     }
 }

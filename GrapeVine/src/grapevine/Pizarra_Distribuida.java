@@ -1,18 +1,21 @@
 
 package grapevine;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Pizarra_Distribuida {
     
     Reunion reunion;
     Observador observador;
-    ArrayList <Persona> Persona;
+    ArrayList <Persona_Real> participantes;
 
     // CONSTRUCTOR
-    public Pizarra_Distribuida(Reunion reunion, Observador observador, ArrayList<Persona> Persona) {
-        this.reunion = reunion;
-        this.observador = observador;
+    public Pizarra_Distribuida(ArrayList<Persona_Real> personas, Date ini, Date fin) {
+        this.reunion = new Reunion(personas, ini, fin);
+        for (Persona_Real persona : personas ) {
+            persona.crearReunion(reunion);
+        }
+        this.observador = new Observador();
         this.Persona = Persona;
     }
 
@@ -33,12 +36,12 @@ public class Pizarra_Distribuida {
         this.observador = observador;
     }
 
-    public ArrayList<Persona> getPersona() {
-        return Persona;
+    public ArrayList<Persona_Real> getParticipantes() {
+        return participantes;
     }
 
-    public void setPersona(ArrayList<Persona> Persona) {
-        this.Persona = Persona;
+    public void setParticipantes(ArrayList<Persona_Real> participantes) {
+        this.participantes = participantes;
     }
     
 }

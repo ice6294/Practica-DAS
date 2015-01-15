@@ -9,8 +9,8 @@ public class Tablon {
     ArrayList <Mensaje> mensajes;
 
     // CONSTRUCTOR
-    public Tablon(ArrayList<Mensaje> mensajes) {
-        this.mensajes = mensajes;
+    public Tablon() {
+        this.mensajes = new ArrayList<>();
     }
 
     // GETTERS & SETTERS

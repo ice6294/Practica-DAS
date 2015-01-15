@@ -17,17 +17,17 @@ public class Persona_Real implements Persona, Serializable{
     int ip; //entero que simula la ip del usuario
     int password; //contraseña única para identificar al usuario
     ArrayList <Pizarra_Distribuida> pizarras;
-    ArrayList <Persona> amigos;//en el uml llamado "personas"
+    ArrayList <Persona_Real> amigos;//en el uml llamado "personas"
     Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
     // CONSTRUCTOR
-    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Persona> persona, Proxy proxy)  {
+    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Persona_Real> persona)  {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
         this.password = password;
         this.pizarras = pizarras;
         this.amigos = persona;
-        this.proxy = proxy;
+        this.proxy = new Proxy(this);
     }
     public Persona_Real(Persona_Real pr){
         this.nombreUsuario = pr.getNombreUsuario();
@@ -115,11 +115,11 @@ public class Persona_Real implements Persona, Serializable{
         this.pizarras = pizarras;
     }
 
-    public ArrayList<Persona> getPersonas() {
+    public ArrayList<Persona_Real> getPersonas() {
         return amigos;
     }
 
-    public void setPersonas(ArrayList<Persona> amigos) {
+    public void setPersonas(ArrayList<Persona_Real> amigos) {
         this.amigos = amigos;
     }
 
@@ -131,8 +131,24 @@ public class Persona_Real implements Persona, Serializable{
         this.proxy = proxy;
     }
     
-    public boolean AgregarContacto(){
-        return false;
+    //METODOS
+    public void AgregarContacto(Persona_Real p){
+        this.amigos.add(p);
+    }
+    
+    public boolean crearEvento(ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
+        if (this.proxy.GestorReunion()){    // se le pasaraían los atributos etc
+            Pizarra_Distribuida evento = new Pizarra_Distribuida(amigos, fecha_ini, fecha_fin);
+            return true;
+        } else {
+            System.out.println("Pos nada");
+            return false;
+        }
+    }
+    
+    public void crearReunion (Reunion r) {
+        
+        
     }
     
     public boolean EliminarContacto(Persona p){//recordar E/S
@@ -140,7 +156,7 @@ public class Persona_Real implements Persona, Serializable{
        //falta actualizar ficheros
     }
     
-    public boolean ConfirmacionReunion(Reunion r) throws IOException{
+    public boolean ConfirmacionEvento(Reunion r) throws IOException{
         if(ConsultaProxy()){
             System.out.println("¿Desea confirmar que esta libre y quiere la reunión?: (S/N) "+r.toString());
             InputStreamReader isr = new InputStreamReader(System.in);
@@ -176,8 +192,8 @@ public class Persona_Real implements Persona, Serializable{
             se devuelve false y punto, si hay una reunión, se elije, se la llama y se le envía el mensaje*/
         
         //una vez elegida la pizarra que estuviera activa se haría
-        Pizarra_Distribuida piz = new Pizarra_Distribuida(null, null, amigos);
-        piz.getReunion().escribirMensaje(m);
+        //Pizarra_Distribuida piz = new Pizarra_Distribuida(amigos);
+        //piz.getReunion().escribirMensaje(m);
         
         
         System.out.println("Te metes el mensaje por el culo imbécil ;)");
