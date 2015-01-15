@@ -105,10 +105,14 @@ public class Persona_Real implements Persona, Serializable{
                 persona.agregarEvento(evento);
                 observadores.add(evento.getObservador());
             }
+            System.out.println("Observadores"+observadores.size());
             for (int i=0; i<observadores.size();i++){
+                System.out.println("Compruebo mientras "+i+" <= "+observadores.size());
                 // Los observadores de todos los participantes se apuntarán entre sí
-                personas.get(i).getPizarra(id).getObservador().setRestoParticipantes(observadores);
+                ArrayList<Observador> aux = (ArrayList<Observador>) observadores.clone();
+                personas.get(i).getPizarra(id).getObservador().setRestoParticipantes(aux);
                 personas.get(i).getPizarra(id).getObservador().getRestoParticipantes().remove(i);
+                System.out.println(i);
             }
             return true;
         } else {
@@ -119,19 +123,13 @@ public class Persona_Real implements Persona, Serializable{
     
     public Pizarra_Distribuida getPizarra (int id){
         int i=0;
-        boolean encontrado = false;
-        while (i<pizarras.size() && !encontrado){
+        while (i<pizarras.size()){
             if (this.pizarras.get(i).getId()==id){
-                encontrado=true;
-                break;
+                return this.pizarras.get(i);
             }
             i++;
         }
-        if (encontrado){
-            return this.pizarras.get(i);
-        } else {
-            return null;
-        }
+        return null;
     }
     
     public void agregarEvento (Pizarra_Distribuida evento) {

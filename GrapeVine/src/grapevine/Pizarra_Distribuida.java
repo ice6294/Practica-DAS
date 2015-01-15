@@ -15,6 +15,7 @@ public class Pizarra_Distribuida {
         this.id=id;
         this.reunion = new Reunion(personas, ini, fin);
         this.observador = new Observador(reunion);
+        this.reunion.setObservador(observador);
     }
 
     // GETTERS & SETTERS

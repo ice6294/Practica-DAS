@@ -18,7 +18,6 @@ public class Reunion {
         this.fecha_fin=fecha_fin;
         this.activa=false;
         this.tablon = new Tablon();
-        //this.observador = new Observador(observadores, this);
     }
 
     // GETTERS & SETTERS
@@ -74,9 +73,5 @@ public class Reunion {
     
     public void guardar(Mensaje m){
         this.tablon.addMensaje(m);
-    }
-
-    private ArrayList<Observador> conseguirObservadores() {
-        return null;
     }
 }
