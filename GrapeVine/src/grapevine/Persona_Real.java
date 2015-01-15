@@ -17,7 +17,8 @@ public class Persona_Real implements Persona, Serializable{
     String nombreUsuario;   //nombre del usuario es único y no puede repetirse
     int ip; //entero que simula la ip del usuario
     int password; //contraseña única para identificar al usuario
-    ArrayList <Pizarra_Distribuida> pizarras;
+    ArrayList <Pizarra_Distribuida> pizarras; // 5 - 5:05
+    ArrayList <Cita> calendario;
     ArrayList <Persona_Real> amigos;//en el uml llamado "personas"
     Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
@@ -92,12 +93,17 @@ public class Persona_Real implements Persona, Serializable{
     
     
     //METODOS
+    public boolean CrearHuecoOcupado(Date ini, Date fin){
+
+        return true;
+    }
+    
     public void AgregarContacto(Persona_Real p){
         this.amigos.add(p);
     }
     
     public boolean crearEvento(int id, ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
-        if (this.proxy.GestorReunion()){    // se le pasaraían los atributos ...
+        if (this.GestorReunion(personas, fecha_ini, fecha_fin)){    // se le pasaraían los atributos ...
             ArrayList<Observador> observadores = new ArrayList<>();
             for (Persona_Real persona : personas) { // la propia persona tiene que estar en la lista
                 // Creamos una pizarra (con observador sin apuntar a otros observadores) en cada persona
@@ -264,5 +270,25 @@ public class Persona_Real implements Persona, Serializable{
     @Override
     public String toString() {
         return "Persona_Real{" + "nombreUsuario=" + nombreUsuario + ", ip=" + ip + ", password=" + password + ", pizarras=" + pizarras + ", amigos=" + amigos + ", proxy=" + proxy + '}';
+    }
+
+    @Override
+    public boolean GestorReunion(ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin) {
+        return proxy.GestorReunion(personas,fecha_ini,fecha_fin);
+    }
+
+    @Override
+    public boolean HuecoCalendario(Date ini, Date fin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean Confirma(Date ini) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean Notifica() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

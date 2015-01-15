@@ -3,6 +3,7 @@ package grapevine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Proxy implements Persona, Serializable{
@@ -30,7 +31,10 @@ public class Proxy implements Persona, Serializable{
     }
  
     
-    public boolean GestorReunion(){// recordar crear en un fichero local llamado reuniones.txt
+    // MÉTODOS
+    public boolean GestorReunion(ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
+            
+            // recordar crear en un fichero local llamado reuniones.txt
             //mirar que todos las personas de esa reuniones.txt tienen libre una determinada fechaini
             // en caso correcto para todas las personas de la reunion llamar a confirmacion de reunión y esperar en un bucle hasta obtener todos true
              return true;// en caso de recibir un false break en el bucle y enviar false 
@@ -53,6 +57,21 @@ public class Proxy implements Persona, Serializable{
 //    public void reservarHorario() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
+
+    @Override
+    public boolean HuecoCalendario(Date ini, Date fin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean Confirma(Date ini) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean Notifica() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

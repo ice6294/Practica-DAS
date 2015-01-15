@@ -1,21 +1,22 @@
 package grapevine;
 
+import java.io.IOException;
 import java.util.*;
+import java.net.*;
 
 public class GrapeVine {
 
+//    private static Socket conexion; //Socket para conectarse con el cliente
+//    private static final String ip = "127.0.0.1"; //ip a la cual se conecta
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         Persona_Real p1 = new Persona_Real("Federico", 77, 1234, new ArrayList<>(), new ArrayList<>());
         Persona_Real p2 = new Persona_Real("Alfonso", 22, 4321, new ArrayList<>(), new ArrayList<>());
         Persona_Real p3 = new Persona_Real("Antonio", 442, 9877, new ArrayList<>(), new ArrayList<>());
         
-        p1.AgregarContacto(p2);
-        p2.AgregarContacto(p1);
-        
-        Date fecha_ini = new Date();
-        Date fecha_fin = new Date();
+        Date fecha_ini = new Date(2015,3,15,15,10);
+        Date fecha_fin = new Date(2015,3,15,15,15);
         
         ArrayList<Persona_Real> integrantes = new ArrayList<>();
         integrantes.add(p1);
@@ -32,20 +33,21 @@ public class GrapeVine {
         System.out.println("    Pizarras: "+ p3.getPizarras().size());
         System.out.println("    Observados: "+ p3.getPizarras().get(0).getObservador().getRestoParticipantes().size());
         
-                
-        Mensaje m = new Mensaje("Hola hola", "Federico");
-        p1.getPizarras().get(0).getReunion().escribirMensaje(m);
-        
         String entradaTeclado = "";
         Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
         
+        Mensaje m;
         int id=666;
-        System.out.println("Comienza la conversación:");
+        System.out.println("Bienvenido a GrapeVine. Comienza la reunion:");
         while(true){
             System.out.print("~ ");
             entradaTeclado = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
-            m = new Mensaje(entradaTeclado,"Luis");
-            p1.escribir(m,id);
+            if (entradaTeclado.equals("exit")){
+                break;
+            } else {
+                m = new Mensaje(entradaTeclado,"Luis");
+                p1.escribir(m,id);
+            }
         }
     }
 }
