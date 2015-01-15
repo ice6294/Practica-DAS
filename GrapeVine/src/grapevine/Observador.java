@@ -10,8 +10,8 @@ public class Observador {
     Reunion reunion;
 
     // CONSTRUCTOR
-    public Observador(ArrayList<Observador> restoParticipantes, Reunion reunion) {
-        this.restoParticipantes = restoParticipantes;
+    public Observador(Reunion reunion) {
+        this.restoParticipantes = null;
         this.reunion=reunion;
     }
 

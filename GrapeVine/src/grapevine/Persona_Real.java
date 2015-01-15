@@ -13,6 +13,7 @@ import java.util.*;
 
 public class Persona_Real implements Persona, Serializable{
 
+    // VARIABLES
     String nombreUsuario;   //nombre del usuario es único y no puede repetirse
     int ip; //entero que simula la ip del usuario
     int password; //contraseña única para identificar al usuario
@@ -21,12 +22,12 @@ public class Persona_Real implements Persona, Serializable{
     Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
     // CONSTRUCTOR
-    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Persona_Real> persona)  {
+    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Persona_Real> amigos)  {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
         this.password = password;
         this.pizarras = pizarras;
-        this.amigos = persona;
+        this.amigos = amigos;
         this.proxy = new Proxy(this);
     }
     public Persona_Real(Persona_Real pr){
@@ -38,49 +39,6 @@ public class Persona_Real implements Persona, Serializable{
         this.proxy = pr.getProxy();
     }
     
-    public boolean GuardarDatosFichero(Persona_Real pr) throws IOException{
-        String fichero = "amigosRegistradas.txt";
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
-        Persona_Real p=new Persona_Real(pr);
-        BufferedReader br = null;
-        try {
-           //Crear un objeto BufferedReader al que se le pasa 
-           //   un objeto FileReader con el nombre del fichero
-           br = new BufferedReader(new FileReader(fichero));
-           //Leer la primera línea, guardando en un String
-           String texto = br.readLine();
-           //Repetir mientras no se llegue al final del fichero
-           while(texto != null && !texto.equals(p.toString()))
-           {
-               //Leer la siguiente línea
-               texto = br.readLine();
-           }
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("Error: Fichero no encontrado");
-            System.out.println(e.getMessage());
-        }
-        catch(Exception e) {
-            System.out.println("Error de lectura del fichero");
-            System.out.println(e.getMessage());
-        }
-        finally {
-            try {
-                if(br != null)
-                    br.close();
-                if (br.readLine()==null){
-                    oos.writeObject(p); 
-                    oos.close();
-                    return true;
-                }
-            }
-            catch (Exception e) {
-                System.out.println("Error al cerrar el fichero");
-                System.out.println(e.getMessage());
-            }
-        }
-        return false;
-    }
 
     // GETTERS & SETTERS
     public String getNombreUsuario() {
@@ -131,24 +89,53 @@ public class Persona_Real implements Persona, Serializable{
         this.proxy = proxy;
     }
     
+    
+    
     //METODOS
     public void AgregarContacto(Persona_Real p){
         this.amigos.add(p);
     }
     
-    public boolean crearEvento(ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
-        if (this.proxy.GestorReunion()){    // se le pasaraían los atributos etc
-            Pizarra_Distribuida evento = new Pizarra_Distribuida(amigos, fecha_ini, fecha_fin);
+    public boolean crearEvento(int id, ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
+        if (this.proxy.GestorReunion()){    // se le pasaraían los atributos ...
+            ArrayList<Observador> observadores = new ArrayList<>();
+            for (Persona_Real persona : personas) { // la propia persona tiene que estar en la lista
+                // Creamos una pizarra (con observador sin apuntar a otros observadores) en cada persona
+                Pizarra_Distribuida evento = new Pizarra_Distribuida(id, personas, fecha_ini, fecha_fin);
+                persona.agregarEvento(evento);
+                observadores.add(evento.getObservador());
+            }
+            for (int i=0; i<observadores.size();i++){
+                // Los observadores de todos los participantes se apuntarán entre sí
+                personas.get(i).getPizarra(id).getObservador().setRestoParticipantes(observadores);
+                personas.get(i).getPizarra(id).getObservador().getRestoParticipantes().remove(i);
+            }
             return true;
         } else {
-            System.out.println("Pos nada");
+            System.out.println("Pos nada, la próxima vez será");
             return false;
         }
     }
     
-    public void crearReunion (Reunion r) {
-        
-        
+    public Pizarra_Distribuida getPizarra (int id){
+        int i=0;
+        boolean encontrado = false;
+        while (i<pizarras.size() && !encontrado){
+            if (this.pizarras.get(i).getId()==id){
+                encontrado=true;
+                break;
+            }
+            i++;
+        }
+        if (encontrado){
+            return this.pizarras.get(i);
+        } else {
+            return null;
+        }
+    }
+    
+    public void agregarEvento (Pizarra_Distribuida evento) {
+        this.pizarras.add(evento);
     }
     
     public boolean EliminarContacto(Persona p){//recordar E/S
@@ -200,10 +187,53 @@ public class Persona_Real implements Persona, Serializable{
         return false;
     }
     
-//    public void CrearReunion(){ // me falta añadir los atributos necesarios para una reunión
-//        pizarras nueva= new Reunion();// me falta llamar al constructor de forma adecuada metienndo los atributos correctos
-//    }
+    public boolean GuardarDatosFichero(Persona_Real pr) throws IOException{
+        String fichero = "amigosRegistradas.txt";
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
+        Persona_Real p=new Persona_Real(pr);
+        BufferedReader br = null;
+        try {
+           //Crear un objeto BufferedReader al que se le pasa 
+           //   un objeto FileReader con el nombre del fichero
+           br = new BufferedReader(new FileReader(fichero));
+           //Leer la primera línea, guardando en un String
+           String texto = br.readLine();
+           //Repetir mientras no se llegue al final del fichero
+           while(texto != null && !texto.equals(p.toString()))
+           {
+               //Leer la siguiente línea
+               texto = br.readLine();
+           }
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Error: Fichero no encontrado");
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e) {
+            System.out.println("Error de lectura del fichero");
+            System.out.println(e.getMessage());
+        }
+        finally {
+            try {
+                if(br != null)
+                    br.close();
+                if (br.readLine()==null){
+                    oos.writeObject(p); 
+                    oos.close();
+                    return true;
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Error al cerrar el fichero");
+                System.out.println(e.getMessage());
+            }
+        }
+        return false;
+    }
     
+    
+    
+    // OTROS
     @Override
     public int hashCode() {
         int hash = 7;
@@ -240,7 +270,4 @@ public class Persona_Real implements Persona, Serializable{
     public String toString() {
         return "Persona_Real{" + "nombreUsuario=" + nombreUsuario + ", ip=" + ip + ", password=" + password + ", pizarras=" + pizarras + ", amigos=" + amigos + ", proxy=" + proxy + '}';
     }
-    
-    
-    
 }

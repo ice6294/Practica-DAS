@@ -5,21 +5,24 @@ import java.util.*;
 
 public class Pizarra_Distribuida {
     
+    int id;
     Reunion reunion;
     Observador observador;
     ArrayList <Persona_Real> participantes;
 
     // CONSTRUCTOR
-    public Pizarra_Distribuida(ArrayList<Persona_Real> personas, Date ini, Date fin) {
+    public Pizarra_Distribuida(int id, ArrayList<Persona_Real> personas, Date ini, Date fin) {
+        this.id=id;
         this.reunion = new Reunion(personas, ini, fin);
-        for (Persona_Real persona : personas ) {
-            persona.crearReunion(reunion);
-        }
-        this.observador = new Observador();
-        this.Persona = Persona;
+        this.observador = new Observador(reunion);
     }
 
     // GETTERS & SETTERS
+
+    public int getId() {
+        return id;
+    }
+    
     public Reunion getReunion() {
         return reunion;
     }
