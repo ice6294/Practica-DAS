@@ -22,12 +22,23 @@ public class Tablon {
         this.mensajes = mensajes;
     }
     
-    public void mostrarMensajes(){
-        this.mensajes.get(mensajes.size()).imprimeMensaje();
+    public void mostrarMensaje(Mensaje mensaje){
+        mensaje.toString();
     }
     
     // METODOS
     public void add(Mensaje mensaje){
+        this.mostrarMensaje(mensaje);
         this.mensajes.add(mensaje);
+    }
+    
+    public void mostrarTodosMensajes(){
+        
+        for (int i = 0; i < this.mensajes.size(); i++){
+            
+            this.mensajes.get(i).toString();
+            
+        }
+        
     }
 }
