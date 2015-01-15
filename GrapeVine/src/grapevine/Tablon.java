@@ -34,10 +34,8 @@ public class Tablon {
     
     public void mostrarTodosMensajes(){
         
-        for (int i = 0; i < this.mensajes.size(); i++){
-            
-            this.mensajes.get(i).toString();
-            
+        for (Mensaje mensaje : this.mensajes) {
+            mensaje.toString();
         }
         
     }

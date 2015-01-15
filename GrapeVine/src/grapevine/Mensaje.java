@@ -14,6 +14,7 @@ public class Mensaje {
         this.contenido = contenido;
         this.autor = autor;
         this.hora = new Date();
+
     }
 
     // GETTERS & SETTERS
@@ -37,9 +38,9 @@ public class Mensaje {
         return hora;
     }
 
-    public void setHora(Date hora) {
-        this.hora = hora;  
-    }
+//    public void setHora(Date hora) {
+//        this.hora = hora;  
+//    }
     @Override
     public String toString(){
         return ("-- " + this.autor + " " + this.hora + " --\n" + this.contenido);
