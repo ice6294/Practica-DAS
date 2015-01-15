@@ -1,4 +1,3 @@
-
 package grapevine;
 
 import java.io.BufferedReader;
@@ -18,7 +17,7 @@ public class Persona_Real implements Persona, Serializable{
     int ip; //entero que simula la ip del usuario
     int password; //contraseña única para identificar al usuario
     ArrayList <Pizarra_Distribuida> pizarras; // 5 - 5:05
-    ArrayList <Cita> calendario;
+    Calendario calendario;
     ArrayList <Persona_Real> amigos;//en el uml llamado "personas"
     Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
@@ -36,7 +35,7 @@ public class Persona_Real implements Persona, Serializable{
         this.ip = pr.getIp();
         this.password = pr.getIp();
         this.pizarras = pr.getPizarras();
-        this.amigos = pr.getPersonas();
+        this.amigos = pr.getAmigos();
         this.proxy = pr.getProxy();
     }
     
@@ -58,11 +57,11 @@ public class Persona_Real implements Persona, Serializable{
         this.ip = ip;
     }
 
-    public int getId() {//Método que desaparecerá cuando se termine el periodo de implementación
+    public int getPassword() {//Método que desaparecerá cuando se termine el periodo de implementación
         return password;
     }
 
-    public void setId(int password) {// recordar seguridad y confirmación
+    public void setPassword(int password) {// recordar seguridad y confirmación
         this.password = password;
     }
 
@@ -74,11 +73,11 @@ public class Persona_Real implements Persona, Serializable{
         this.pizarras = pizarras;
     }
 
-    public ArrayList<Persona_Real> getPersonas() {
+    public ArrayList<Persona_Real> getAmigos() {
         return amigos;
     }
 
-    public void setPersonas(ArrayList<Persona_Real> amigos) {
+    public void setAmigos(ArrayList<Persona_Real> amigos) {
         this.amigos = amigos;
     }
 
@@ -88,6 +87,14 @@ public class Persona_Real implements Persona, Serializable{
 
     public void setProxy(Proxy proxy) {
         this.proxy = proxy;
+    }
+
+    public Calendario getCalendario() {
+        return calendario;
+    }
+
+    public void setCalendario(Calendario calendario) {
+        this.calendario = calendario;
     }
     
     
@@ -279,16 +286,16 @@ public class Persona_Real implements Persona, Serializable{
 
     @Override
     public boolean HuecoCalendario(Date ini, Date fin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return proxy.HuecoCalendario(ini, fin);
     }
 
     @Override
     public boolean Confirma(Date ini) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return proxy.Confirma(ini);
     }
 
     @Override
     public boolean Notifica() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return proxy.Notifica();
     }
 }

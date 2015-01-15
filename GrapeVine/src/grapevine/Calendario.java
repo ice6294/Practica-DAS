@@ -1,4 +1,3 @@
-
 package grapevine;
 
 import java.util.*;
@@ -23,6 +22,12 @@ public class Calendario {
     
     // MÉTODOS
     public boolean agregarCita(Date ini, Date fin){
+        Cita c = new Cita (ini,fin);
+        return this.agregarCita(c);
+    }
+    
+    public boolean agregarCita(Cita cita){
+        
         return true;
     }
 }

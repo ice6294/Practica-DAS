@@ -1,15 +1,13 @@
 package grapevine;
 
-import java.io.IOException;
 import java.util.*;
-import java.net.*;
 
 public class GrapeVine {
 
 //    private static Socket conexion; //Socket para conectarse con el cliente
 //    private static final String ip = "127.0.0.1"; //ip a la cual se conecta
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         
         Persona_Real p1 = new Persona_Real("Federico", 77, 1234, new ArrayList<>(), new ArrayList<>());
         Persona_Real p2 = new Persona_Real("Alfonso", 22, 4321, new ArrayList<>(), new ArrayList<>());
