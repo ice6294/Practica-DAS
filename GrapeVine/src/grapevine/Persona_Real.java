@@ -15,17 +15,17 @@ public class Persona_Real implements Persona, Serializable{
 
     String nombreUsuario;   //nombre del usuario es único y no puede repetirse
     int ip; //entero que simula la ip del usuario
-    int password; //contraseña única para passwordentificar al usuario
-    ArrayList <Reunion> reunion;
+    int password; //contraseña única para identificar al usuario
+    ArrayList <Pizarra_Distribuida> pizarras;
     ArrayList <Persona> amigos;//en el uml llamado "personas"
     Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
     // CONSTRUCTOR
-    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Reunion> reunion, ArrayList<Persona> persona, Proxy proxy)  {
+    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Persona> persona, Proxy proxy)  {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
         this.password = password;
-        this.reunion = reunion;
+        this.pizarras = pizarras;
         this.amigos = persona;
         this.proxy = proxy;
     }
@@ -33,7 +33,7 @@ public class Persona_Real implements Persona, Serializable{
         this.nombreUsuario = pr.getNombreUsuario();
         this.ip = pr.getIp();
         this.password = pr.getIp();
-        this.reunion = pr.getReunion();
+        this.pizarras = pr.getReunion();
         this.amigos = pr.getPersonas();
         this.proxy = pr.getProxy();
     }
@@ -103,16 +103,16 @@ public class Persona_Real implements Persona, Serializable{
         return password;
     }
 
-    public void setId(int password) {// recordar segurpasswordad y confirmación
+    public void setId(int password) {// recordar seguridad y confirmación
         this.password = password;
     }
 
-    public ArrayList<Reunion> getReunion() {
-        return reunion;
+    public ArrayList<Pizarra_Distribuida> getReunion() {
+        return pizarras;
     }
 
-    public void setReunion(ArrayList<Reunion> reunion) {
-        this.reunion = reunion;
+    public void setReunion(ArrayList<Pizarra_Distribuida> pizarras) {
+        this.pizarras = pizarras;
     }
 
     public ArrayList<Persona> getPersonas() {
@@ -163,8 +163,8 @@ public class Persona_Real implements Persona, Serializable{
     }
     
     public boolean EnReunion(){// Me falta fecha inicio en la clase reunón
-        for(int i=0;i<=this.reunion.size();i++){
-            if (this.reunion.get(i).isActiva()){
+        for(int i=0;i<=this.pizarras.size();i++){
+            if (this.pizarras.get(i).getReunion().isActiva()){
                 return true;
             }
         }
@@ -172,7 +172,7 @@ public class Persona_Real implements Persona, Serializable{
     }
     
 //    public void CrearReunion(){ // me falta añadir los atributos necesarios para una reunión
-//        reunion nueva= new Reunion();// me falta llamar al constructor de forma adecuada metienndo los atributos correctos
+//        pizarras nueva= new Reunion();// me falta llamar al constructor de forma adecuada metienndo los atributos correctos
 //    }
     
     
@@ -211,7 +211,7 @@ public class Persona_Real implements Persona, Serializable{
 
     @Override
     public String toString() {
-        return "Persona_Real{" + "nombreUsuario=" + nombreUsuario + ", ip=" + ip + ", password=" + password + ", reunion=" + reunion + ", amigos=" + amigos + ", proxy=" + proxy + '}';
+        return "Persona_Real{" + "nombreUsuario=" + nombreUsuario + ", ip=" + ip + ", password=" + password + ", pizarras=" + pizarras + ", amigos=" + amigos + ", proxy=" + proxy + '}';
     }
     
     
