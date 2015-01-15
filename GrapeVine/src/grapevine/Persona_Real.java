@@ -33,7 +33,7 @@ public class Persona_Real implements Persona, Serializable{
         this.nombreUsuario = pr.getNombreUsuario();
         this.ip = pr.getIp();
         this.password = pr.getIp();
-        this.pizarras = pr.getReunion();
+        this.pizarras = pr.getPizarras();
         this.amigos = pr.getPersonas();
         this.proxy = pr.getProxy();
     }
@@ -107,11 +107,11 @@ public class Persona_Real implements Persona, Serializable{
         this.password = password;
     }
 
-    public ArrayList<Pizarra_Distribuida> getReunion() {
+    public ArrayList<Pizarra_Distribuida> getPizarras() {
         return pizarras;
     }
 
-    public void setReunion(ArrayList<Pizarra_Distribuida> pizarras) {
+    public void setPizarras(ArrayList<Pizarra_Distribuida> pizarras) {
         this.pizarras = pizarras;
     }
 
