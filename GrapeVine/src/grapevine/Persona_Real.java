@@ -162,18 +162,14 @@ public class Persona_Real implements Persona, Serializable{
         return true;// de momento hasta que se haga la vista con ficheros
     }
     
-//    public boolean EnReunion(){// Me falta fecha inicio en la clase reunón
-//        for(int i=0;i<=this.reunion.size();i++){
-//            java.util.Date fechaSistema=new Date();
-//            if (fechaSistema.compareTo(this.reunion.get(i).getFechaini())==0){
-//                return true;
-//            }
-//            else{
-//                return false;
-//            }
-//        }
-//        return false;
-//    }
+    public boolean EnReunion(){// Me falta fecha inicio en la clase reunón
+        for(int i=0;i<=this.reunion.size();i++){
+            if (this.reunion.get(i).isActiva()){
+                return true;
+            }
+        }
+        return false;
+    }
     
 //    public void CrearReunion(){ // me falta añadir los atributos necesarios para una reunión
 //        reunion nueva= new Reunion();// me falta llamar al constructor de forma adecuada metienndo los atributos correctos

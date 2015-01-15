@@ -13,6 +13,7 @@ public class Proxy implements Persona, Serializable{
     ArrayList <Reunion> reunion;
     ArrayList <Persona> persona;
 
+    // CONSTRUCTOR
     public Proxy(String nombreUsuario, int ip, int id, ArrayList<Reunion> reunion, ArrayList<Persona> persona) {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
@@ -21,6 +22,7 @@ public class Proxy implements Persona, Serializable{
         this.persona = persona;
     }
 
+    // GETTERS & SETTERS
     public String getNombreUsuario() {
         return nombreUsuario;
     }
