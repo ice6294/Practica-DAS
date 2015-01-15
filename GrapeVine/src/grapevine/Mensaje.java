@@ -44,5 +44,4 @@ public class Mensaje {
         System.out.println("-- " + this.autor + " " + this.hora + " --");
         System.out.println(this.contenido);
     }
-    
 }
