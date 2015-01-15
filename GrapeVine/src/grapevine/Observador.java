@@ -6,34 +6,41 @@ import java.util.ArrayList;
 
 public class Observador {
     
-    ArrayList <Persona> persona;
-    ArrayList <Observador> observador;
+    ArrayList <Observador> restoParticipantes;
 
     // CONSTRUCTOR
-    public Observador(ArrayList<Persona> persona, ArrayList<Observador> observador) {
-        this.persona = persona;
-        this.observador = observador;
+    public Observador(ArrayList<Observador> restoParticipantes) {
+        this.restoParticipantes = restoParticipantes;
     }
 
-    public Observador(ArrayList<Persona> persona) {
-        this.persona = persona;
-    }
 
     // GETTERS & SETTERS
-    public ArrayList<Persona> getPersona() {
-        return persona;
-    }
-
-    public void setPersona(ArrayList<Persona> persona) {
-        this.persona = persona;
-    }
 
     public ArrayList<Observador> getObservador() {
-        return observador;
+        return restoParticipantes;
     }
 
-    public void setObservador(ArrayList<Observador> observador) {
-        this.observador = observador;
+    public void setObservador(ArrayList<Observador> restoParticipantes) {
+        this.restoParticipantes = restoParticipantes;
+    }
+    
+    
+    //FUNCIONES DE PASO DE MENSAJE
+    
+    public void actualizaRestoParticipantes(Mensaje m){
+        
+        for (int i=0; i<restoParticipantes.size();i++){
+            
+            restoParticipantes.get(i).actualizarme(m);
+            
+        }
+        
+    }
+    
+    public void actualizarme(Mensaje m){
+        
+        
+        
     }
 
 }
