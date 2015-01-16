@@ -18,16 +18,28 @@ public class Cita {
         return fecha_ini;
     }
 
-    public void setFecha_ini(Date fecha_ini) {
-        this.fecha_ini = fecha_ini;
-    }
-
     public Date getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
-        this.fecha_fin = fecha_fin;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cita other = (Cita) obj;
+        if (!Objects.equals(this.fecha_ini, other.fecha_ini)) {
+            return false;
+        }
+        if (!Objects.equals(this.fecha_fin, other.fecha_fin)) {
+            return false;
+        }
+        return true;
     }
+    
+    
     
 }

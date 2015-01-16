@@ -276,7 +276,7 @@ public class Persona_Real implements Persona, Serializable{
 
     @Override
     public String toString() {
-        return "Persona_Real{" + "nombreUsuario=" + nombreUsuario + ", ip=" + ip + ", password=" + password + ", pizarras=" + pizarras + ", amigos=" + amigos + ", proxy=" + proxy + '}';
+        return ("Nombre de usuario =" + nombreUsuario + ", IP =" + ip);
     }
 
     @Override
@@ -291,7 +291,11 @@ public class Persona_Real implements Persona, Serializable{
 
     public boolean Confirma(ArrayList<Persona_Real> personas, Date ini) {
         System.out.println("Hay una nueva Cita con ");
-        System.out.println(personas);
+        for (Persona_Real persona: personas){
+            
+            System.out.println(persona.toString());
+            
+        }
         System.out.println("Con fecha de inicio "+ ini);
         System.out.println("¿Desea confirmarla?");
         
@@ -299,11 +303,11 @@ public class Persona_Real implements Persona, Serializable{
         Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
         String entradaTeclado = entradaEscaner.nextLine();
         
-        while (entradaTeclado!="S"||entradaTeclado!="s"||entradaTeclado!="n"||entradaTeclado!="N"){
+        while (!(entradaTeclado.equalsIgnoreCase("S")||entradaTeclado.equalsIgnoreCase("N"))){
             System.out.println("Ha introducido un valor incorrecto, introduzca Sí (S) o No (N)");
             entradaTeclado = entradaEscaner.nextLine();
         }
-        if (entradaTeclado=="S"||entradaTeclado=="s"){
+        if (entradaTeclado.equalsIgnoreCase("S")){
             return true;
         } else{
             return false;
