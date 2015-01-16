@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.net.*;
 import java.rmi.*;
+import sun.net.NetworkServer;
 
 public class GrapeVine {
 
@@ -12,30 +13,47 @@ public class GrapeVine {
     
     public static void main(String[] args) throws IOException, InterruptedException{
         
-        ServerSocket ss1 = new ServerSocket(51); //escucho puerto 55
-        System.out.println("Esperando una conexión:");
-
-        Socket conexion; //preparo socket para pillar la entrada
-        conexion = ss1.accept();
-        System.out.println("Un cliente se ha conectado.");
-        //Canales de entrada y salida de datos
-        BufferedReader entradaserver = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
-        DataOutputStream salidaserver = new DataOutputStream(conexion.getOutputStream());
+        final String HOST = "25.107.131.108";
+        final int PUERTO = 55;
         
-        salidaserver.writeUTF("Dime Cosas");
+        //SERVIDOR
+        ServerSocket ss = new ServerSocket(55); //escucho puerto 55
+        Socket conexionserver = ss.accept();//Hay una conexion ENTRANTE <-
+        System.out.println("Un cliente se ha conectado.");//Canales de entrada y salida de datos
+        BufferedReader entradaserver = new BufferedReader(new InputStreamReader(conexionserver.getInputStream()));
+        DataOutputStream salidaserver = new DataOutputStream(conexionserver.getOutputStream());
+        salidaserver.writeUTF("Dime Cosas\n");        
         salidaserver.flush();
-        String cad;
-        while ((cad = entradaserver.readLine()) != null){
-            if (cad.equals("exit")){
+        
+        
+        //CLIENTE
+        Socket conexioncliente = new Socket (HOST, PUERTO);
+        DataOutputStream mensaje = new DataOutputStream(conexioncliente.getOutputStream());
+        
+        
+        
+        
+        String cad="";
+        String entradaTeclado = "";
+        Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
+        while (true){
+            //RECIBO
+            if((cad = entradaserver.readLine()) != null){
+                System.out.println("Luis " + cad);    
+            }else if (cad.equals("exit")){
                 break;
             }
-            System.out.println("-> " + cad);    
+            //ESCRIBO
+            if ((entradaTeclado = entradaEscaner.nextLine())!=null){
+                mensaje.writeUTF(entradaTeclado);
+            }
+  
         }
 
         entradaserver.close();
         salidaserver.close();
-        ss1.close();//Aqui se cierra la conexión con el cliente
-     
+        ss.close();//Aqui se cierra la conexión con el cliente
+        conexioncliente.close();
         
         
 //        Persona_Real p1 = new Persona_Real("Federico", 77, 1234, new ArrayList<>(), new ArrayList<>());
