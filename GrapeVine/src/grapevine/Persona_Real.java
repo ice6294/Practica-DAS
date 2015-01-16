@@ -286,16 +286,31 @@ public class Persona_Real implements Persona, Serializable{
 
     @Override
     public boolean HuecoCalendario(Date ini, Date fin) {
-        return proxy.HuecoCalendario(ini, fin);
+        return proxy.HuecoCalendario(ini, fin); //redirijimos al proxy, la persona no tiene que responder a esto.
     }
 
-    @Override
-    public boolean Confirma(Date ini) {
-        return proxy.Confirma(ini);
+    public boolean Confirma(ArrayList<Persona_Real> personas, Date ini) {
+        System.out.println("Hay una nueva Cita con ");
+        System.out.println(personas);
+        System.out.println("Con fecha de inicio "+ ini);
+        System.out.println("¿Desea confirmarla?");
+        
+        
+        Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
+        String entradaTeclado = entradaEscaner.nextLine();
+        
+        while (entradaTeclado!="S"||entradaTeclado!="s"||entradaTeclado!="n"||entradaTeclado!="N"){
+            System.out.println("Ha introducido un valor incorrecto, introduzca Sí (S) o No (N)");
+            entradaTeclado = entradaEscaner.nextLine();
+        }
+        if (entradaTeclado=="S"||entradaTeclado=="s"){
+            return true;
+        } else{
+            return false;
+        }
     }
 
-    @Override
-    public boolean Notifica() {
-        return proxy.Notifica();
+    public void Notifica(Date ini) {
+        System.out.println("Se ha realizado la reserva del día " + ini);
     }
 }

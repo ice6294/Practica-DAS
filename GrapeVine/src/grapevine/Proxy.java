@@ -32,6 +32,42 @@ public class Proxy implements Persona, Serializable{
     
     // MÉTODOS
     public boolean GestorReunion(ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
+            ArrayList<Boolean> arrayAux=new ArrayList<>();
+            for (Persona_Real persona : personas){
+                arrayAux.add(persona.HuecoCalendario(fecha_ini, fecha_fin));
+            }
+            boolean aux=true;
+            for (Boolean bo:arrayAux){
+                aux=aux&&bo;
+            }
+            
+            if (aux == false){
+                System.out.println("Algún usuario no dispone de ese horario. ERROR AL CREAR LA REUNION");
+                return false;
+            } else {
+                arrayAux.clear();
+                aux=true;
+                for (Persona_Real persona : personas){
+                    arrayAux.add(persona.Confirma(personas, fecha_ini));
+                }
+                for (Boolean bo:arrayAux){
+                    aux=aux&&bo;
+                }
+                if (aux == false){
+                    System.out.println("Algún usuario ha rechazado la reunión");
+                    return false;
+                } else{
+                    for (Persona_Real persona : personas){
+                        persona.Notifica(fecha_ini);
+                    }
+                    
+                }
+            
+            
+            
+            
+            }
+            
             
             // recordar crear en un fichero local llamado reuniones.txt
             //mirar que todos las personas de esa reuniones.txt tienen libre una determinada fechaini
@@ -59,17 +95,7 @@ public class Proxy implements Persona, Serializable{
 
     @Override
     public boolean HuecoCalendario(Date ini, Date fin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean Confirma(Date ini) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean Notifica() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true; //BY THE MOMENT, HAY QUE HACERLO
     }
     
     
