@@ -13,17 +13,8 @@ public class GrapeVine {
     
     public static void main(String[] args) throws IOException, InterruptedException{
         
-        final String HOST = "25.107.131.108";
-        final int PUERTO = 55;
-        
-        //SERVIDOR
-        ServerSocket ss = new ServerSocket(55); //escucho puerto 55
-        Socket conexionserver = ss.accept();//Hay una conexion ENTRANTE <-
-        System.out.println("Un cliente se ha conectado.");//Canales de entrada y salida de datos
-        BufferedReader entradaserver = new BufferedReader(new InputStreamReader(conexionserver.getInputStream()));
-        DataOutputStream salidaserver = new DataOutputStream(conexionserver.getOutputStream());
-        salidaserver.writeUTF("Dime Cosas\n");        
-        salidaserver.flush();
+        final String HOST = "25.107.131.108"; //Ip luis
+        final int PUERTO = 2000; //puerto luis
         
         
         //CLIENTE
@@ -31,23 +22,44 @@ public class GrapeVine {
         DataOutputStream mensaje = new DataOutputStream(conexioncliente.getOutputStream());
         
         
+        //SERVIDOR
+        ServerSocket ss = new ServerSocket(3000); //escucho puerto 55
+        Socket conexionserver = ss.accept();//Hay una conexion ENTRANTE <-
+        System.out.println("Un cliente se ha conectado.");//Canales de entrada y salida de datos
         
+        //I/O
+        BufferedReader entradaserver = new BufferedReader(new InputStreamReader(conexionserver.getInputStream()));
+        DataOutputStream salidaserver = new DataOutputStream(conexionserver.getOutputStream());
         
+        //Pedir al cliente
+        salidaserver.writeUTF("Dime Cosas\n");        
+        salidaserver.flush();
+        
+        //REUNION
         String cad="";
         String entradaTeclado = "";
         Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
-        while (true){
-            //RECIBO
-            if((cad = entradaserver.readLine()) != null){
-                System.out.println("Luis " + cad);    
-            }else if (cad.equals("exit")){
+        while (((cad = entradaserver.readLine())!= null) || ((entradaTeclado = entradaEscaner.nextLine())!=null)){
+            System.out.println("Dentro");
+            //ESCRIBO
+            if (!(entradaTeclado == null)){
+                mensaje.writeUTF(entradaTeclado);
+            } else if (entradaTeclado.equals("exit")){
+                System.out.println("Break");
                 break;
             }
-            //ESCRIBO
-            if ((entradaTeclado = entradaEscaner.nextLine())!=null){
-                mensaje.writeUTF(entradaTeclado);
+            
+            
+            System.out.println("en el medio");
+            //RECIBO
+            if(!(cad.equals(null))){
+                System.out.println("Luis " + cad);    
             }
-  
+//            }
+            
+            
+            
+            System.out.println("al final");
         }
 
         entradaserver.close();
