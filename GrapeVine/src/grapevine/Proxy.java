@@ -8,10 +8,6 @@ import java.util.Date;
 public class Proxy implements Persona, Serializable{
     
     private Persona_Real persona;   //nombre del usuario es único y no puede repetirse
-//    int ip; //entero que simula la ip del usuario
-//    int id; //contraseña única para identificar al usuario
-//    ArrayList <Reunion> reunion;
-//    ArrayList <Persona> persona;
 
     // CONSTRUCTOR
 
@@ -31,6 +27,7 @@ public class Proxy implements Persona, Serializable{
  
     
     // MÉTODOS
+    @Override
     public boolean GestorReunion(ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
             ArrayList<Boolean> arrayAux=new ArrayList<>();
             for (Persona_Real persona : personas){
@@ -97,6 +94,6 @@ public class Proxy implements Persona, Serializable{
     public boolean HuecoCalendario(Date ini, Date fin) {
         return true; //BY THE MOMENT, HAY QUE HACERLO
     }
-    
+   
     
 }
