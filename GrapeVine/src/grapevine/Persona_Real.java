@@ -129,7 +129,7 @@ public class Persona_Real implements Persona, Serializable{
             }
             return true;
         } else {
-            System.out.println("Pos nada, la próxima vez será");
+            System.out.println("ERROR AL CREAR EL EVENTO");
             return false;
         }
     }
