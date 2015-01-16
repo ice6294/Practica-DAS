@@ -13,13 +13,13 @@ import java.util.*;
 public class Persona_Real implements Persona, Serializable{
 
     // VARIABLES
-    String nombreUsuario;   //nombre del usuario es único y no puede repetirse
-    int ip; //entero que simula la ip del usuario
-    int password; //contraseña única para identificar al usuario
-    ArrayList <Pizarra_Distribuida> pizarras; // 5 - 5:05
-    Calendario calendario;
-    ArrayList <Persona_Real> amigos;//en el uml llamado "personas"
-    Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
+    private String nombreUsuario;   //nombre del usuario es único y no puede repetirse
+    private int ip; //entero que simula la ip del usuario
+    private int password; //contraseña única para identificar al usuario
+    private ArrayList <Pizarra_Distribuida> pizarras; // 5 - 5:05
+    private Calendario calendario;
+    private ArrayList <Persona_Real> amigos;//en el uml llamado "personas"
+    private Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
     // CONSTRUCTOR
     public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Persona_Real> amigos)  {

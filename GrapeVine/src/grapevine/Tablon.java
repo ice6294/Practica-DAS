@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Tablon {
     
-    ArrayList <Mensaje> mensajes;
+    private ArrayList <Mensaje> mensajes;
 
     // CONSTRUCTOR
     public Tablon() {

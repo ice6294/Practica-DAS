@@ -5,9 +5,9 @@ import java.util.Date;
 
 public class Mensaje {
     
-    String contenido;
-    String autor;
-    Date hora;
+    private String contenido;
+    private String autor;
+    private Date hora;
 
     // CONSTRUCTOR
     public Mensaje(String contenido, String autor) {

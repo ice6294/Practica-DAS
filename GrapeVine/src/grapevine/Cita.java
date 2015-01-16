@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Cita {
     
-    Date fecha_ini;
-    Date fecha_fin;
+    private Date fecha_ini;
+    private Date fecha_fin;
     
     // CONSTRUCTOR
     public Cita(Date fecha_ini, Date fecha_fin) {

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Calendario {
     
-    ArrayList<Cita> calendar;
+    private ArrayList<Cita> calendar;
 
     // CONSTRUCTOR
     public Calendario() {

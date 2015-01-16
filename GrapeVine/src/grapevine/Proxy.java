@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Proxy implements Persona, Serializable{
     
-    Persona_Real persona;   //nombre del usuario es único y no puede repetirse
+    private Persona_Real persona;   //nombre del usuario es único y no puede repetirse
 //    int ip; //entero que simula la ip del usuario
 //    int id; //contraseña única para identificar al usuario
 //    ArrayList <Reunion> reunion;

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Observador {
     
-    ArrayList <Observador> restoParticipantes;
-    Reunion reunion;
+    private ArrayList <Observador> restoParticipantes;
+    private Reunion reunion;
 
     // CONSTRUCTOR
     public Observador(Reunion reunion) {

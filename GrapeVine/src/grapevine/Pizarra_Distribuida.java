@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Pizarra_Distribuida {
     
-    int id;
-    Reunion reunion;
-    Observador observador;
+    private int id;
+    private Reunion reunion;
+    private Observador observador;
 //    ArrayList <Persona_Real> participantes;
 
     // CONSTRUCTOR
