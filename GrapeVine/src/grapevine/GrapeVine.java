@@ -12,41 +12,50 @@ public class GrapeVine {
     
     public static void main(String[] args) throws IOException, InterruptedException{
         
-        ServerSocket sc = new ServerSocket(1); //escucho puerto 55
-        Socket so=new Socket();
+        ServerSocket sc = new ServerSocket(55); //escucho puerto 55
         System.out.println("Esperando una conexión:");
+        
+
+        final String HOST = "localhost";
+        Socket cliente=new Socket(HOST,55);
+
+
+        Socket so=new Socket(); //preparo socket para pillar la entrada
         so = sc.accept();
         System.out.println("Un cliente se ha conectado.");
         //Canales de entrada y salida de datos
-        BufferedReader entrada = new BufferedReader(new InputStreamReader(so.getInputStream()));
-        DataOutputStream salida = new DataOutputStream(so.getOutputStream());
-        System.out.println("Confirmando conexion al cliente....");
-        salida.writeUTF("Conexión exitosa...n envia un mensaje :D");
-        //Recepcion de mensaje
+        BufferedReader entradaserver = new BufferedReader(new InputStreamReader(so.getInputStream()));
+        DataOutputStream salidaserver = new DataOutputStream(so.getOutputStream());
+        
+        
 
-        String mensajeRecibido = entrada.readLine();
+        
+        
+        System.out.println("Confirmando conexion al cliente....");
+        salidaserver.writeUTF("Conexión exitosa...n envia un mensaje :D");
+        //Recepcion de mensaje
+        
+        
+        DataOutputStream mensajecliente = new DataOutputStream(cliente.getOutputStream());
+        mensajecliente.writeUTF("Hola que ase");
+        String mensajeRecibido = entradaserver.readLine();
 
         System.out.println(mensajeRecibido);
 
-        salida.writeUTF("Se recibio tu mensaje.n Terminando conexion...");
+        salidaserver.writeUTF("Se recibio tu mensaje.n Terminando conexion...");
 
-        salida.writeUTF("Gracias por conectarte, adios!");
+        salidaserver.writeUTF("Gracias por conectarte, adios!");
 
         System.out.println("Cerrando conexión...");
 
         sc.close();//Aqui se cierra la conexión con el cliente
-
-
-                
-        Thread.sleep(300000);//300 segundos esperando
-                
+     
         
         
-//        
 //        Persona_Real p1 = new Persona_Real("Federico", 77, 1234, new ArrayList<>(), new ArrayList<>());
 //        Persona_Real p2 = new Persona_Real("Alfonso", 22, 4321, new ArrayList<>(), new ArrayList<>());
 //        Persona_Real p3 = new Persona_Real("Antonio", 442, 9877, new ArrayList<>(), new ArrayList<>());
-//        
+//          
 //        Date fecha_ini = new Date(2015,3,15,15,10);
 //        Date fecha_fin = new Date(2015,3,15,15,15);
 //        
