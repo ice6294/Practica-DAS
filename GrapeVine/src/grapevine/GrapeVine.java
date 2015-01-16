@@ -1,6 +1,6 @@
 package grapevine;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.net.*;
 import java.rmi.*;
@@ -12,8 +12,31 @@ public class GrapeVine {
     
     public static void main(String[] args) throws IOException, InterruptedException{
         
-        ServerSocket sockEntrada = new ServerSocket(55);
-        
+        ServerSocket sc = new ServerSocket(1); //escucho puerto 55
+        Socket so=new Socket();
+        System.out.println("Esperando una conexión:");
+        so = sc.accept();
+        System.out.println("Un cliente se ha conectado.");
+        //Canales de entrada y salida de datos
+        BufferedReader entrada = new BufferedReader(new InputStreamReader(so.getInputStream()));
+        DataOutputStream salida = new DataOutputStream(so.getOutputStream());
+        System.out.println("Confirmando conexion al cliente....");
+        salida.writeUTF("Conexión exitosa...n envia un mensaje :D");
+        //Recepcion de mensaje
+
+        String mensajeRecibido = entrada.readLine();
+
+        System.out.println(mensajeRecibido);
+
+        salida.writeUTF("Se recibio tu mensaje.n Terminando conexion...");
+
+        salida.writeUTF("Gracias por conectarte, adios!");
+
+        System.out.println("Cerrando conexión...");
+
+        sc.close();//Aqui se cierra la conexión con el cliente
+
+
                 
         Thread.sleep(300000);//300 segundos esperando
                 
