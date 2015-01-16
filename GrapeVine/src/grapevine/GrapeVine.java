@@ -12,43 +12,29 @@ public class GrapeVine {
     
     public static void main(String[] args) throws IOException, InterruptedException{
         
-        ServerSocket sc = new ServerSocket(55); //escucho puerto 55
+        ServerSocket ss1 = new ServerSocket(51); //escucho puerto 55
         System.out.println("Esperando una conexión:");
-        
 
-        final String HOST = "localhost";
-        Socket cliente=new Socket(HOST,55);
-
-
-        Socket so=new Socket(); //preparo socket para pillar la entrada
-        so = sc.accept();
+        Socket conexion; //preparo socket para pillar la entrada
+        conexion = ss1.accept();
         System.out.println("Un cliente se ha conectado.");
         //Canales de entrada y salida de datos
-        BufferedReader entradaserver = new BufferedReader(new InputStreamReader(so.getInputStream()));
-        DataOutputStream salidaserver = new DataOutputStream(so.getOutputStream());
+        BufferedReader entradaserver = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
+        DataOutputStream salidaserver = new DataOutputStream(conexion.getOutputStream());
         
-        
+        salidaserver.writeUTF("Dime Cosas");
+        salidaserver.flush();
+        String cad;
+        while ((cad = entradaserver.readLine()) != null){
+            if (cad.equals("exit")){
+                break;
+            }
+            System.out.println("-> " + cad);    
+        }
 
-        
-        
-        System.out.println("Confirmando conexion al cliente....");
-        salidaserver.writeUTF("Conexión exitosa...n envia un mensaje :D");
-        //Recepcion de mensaje
-        
-        
-        DataOutputStream mensajecliente = new DataOutputStream(cliente.getOutputStream());
-        mensajecliente.writeUTF("Hola que ase");
-        String mensajeRecibido = entradaserver.readLine();
-
-        System.out.println(mensajeRecibido);
-
-        salidaserver.writeUTF("Se recibio tu mensaje.n Terminando conexion...");
-
-        salidaserver.writeUTF("Gracias por conectarte, adios!");
-
-        System.out.println("Cerrando conexión...");
-
-        sc.close();//Aqui se cierra la conexión con el cliente
+        entradaserver.close();
+        salidaserver.close();
+        ss1.close();//Aqui se cierra la conexión con el cliente
      
         
         
