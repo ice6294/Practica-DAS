@@ -115,7 +115,8 @@ public class Persona_Real implements Persona, Serializable{
             for (Amigo persona : personas) { // la propia persona tiene que estar en la lista
                 // Creamos una pizarra (con observador sin apuntar a otros observadores) en cada persona
                 Pizarra_Distribuida evento = new Pizarra_Distribuida(id, personas, fecha_ini, fecha_fin);
-                persona.agregarEvento(evento);
+                //METODO QUE TIENE HACERLO LUIS
+              //  persona.agregarEvento(evento);
                 observadores.add(evento.getObservador());
             }
             System.out.println("Observadores"+observadores.size());
@@ -123,8 +124,10 @@ public class Persona_Real implements Persona, Serializable{
                 System.out.println("Compruebo mientras "+i+" <= "+observadores.size());
                 // Los observadores de todos los participantes se apuntarán entre sí
                 ArrayList<Observador> aux = (ArrayList<Observador>) observadores.clone();
-                personas.get(i).getPizarra(id).getObservador().setRestoParticipantes(aux);
-                personas.get(i).getPizarra(id).getObservador().getRestoParticipantes().remove(i);
+               
+                //METODO QUE TIENE QUE HACERLO LUIS O QUIEN SEA. LO DE LOS SOCKETS
+                // personas.get(i).getPizarra(id).getObservador().setRestoParticipantes(aux);
+                //personas.get(i).getPizarra(id).getObservador().getRestoParticipantes().remove(i);
                 System.out.println(i);
             }
             return true;
@@ -289,9 +292,9 @@ public class Persona_Real implements Persona, Serializable{
         return proxy.HuecoCalendario(ini, fin); //redirijimos al proxy, la persona no tiene que responder a esto.
     }
 
-    public boolean Confirma(ArrayList<Persona_Real> personas, Date ini) {
+    public boolean Confirma(ArrayList<Amigo> personas, Date ini) {
         System.out.println("Hay una nueva Cita con ");
-        for (Persona_Real persona: personas){
+        for (Amigo persona: personas){
             
             System.out.println(persona.toString());
             
