@@ -3,7 +3,7 @@ package grapevine;
 import java.util.*;
 
 public class Reunion {
-    private ArrayList<Persona_Real> participantes;
+    private ArrayList<Amigo> participantes;
     private Date fecha_ini; // faltan getters y setters
     private Date fecha_fin; // faltan getters y setters
     private boolean activa;
@@ -11,7 +11,7 @@ public class Reunion {
     private Observador observador;
 
     // CONSTRUCTOR
-    public Reunion(ArrayList<Persona_Real> participantes, Date fecha_ini, Date fecha_fin) {
+    public Reunion(ArrayList<Amigo> participantes, Date fecha_ini, Date fecha_fin) {
         this.participantes=participantes;
         this.fecha_ini=fecha_ini;
         this.fecha_fin=fecha_fin;

@@ -280,7 +280,7 @@ public class Persona_Real implements Persona, Serializable{
     }
 
     @Override
-    public boolean GestorReunion(ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin) {
+    public boolean GestorReunion(ArrayList<Amigo> personas, Date fecha_ini, Date fecha_fin) {
         return proxy.GestorReunion(personas,fecha_ini,fecha_fin);
     }
 

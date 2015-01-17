@@ -10,7 +10,7 @@ public class Pizarra_Distribuida {
 //    ArrayList <Persona_Real> participantes;
 
     // CONSTRUCTOR
-    public Pizarra_Distribuida(int id, ArrayList<Persona_Real> participantes, Date ini, Date fin) {
+    public Pizarra_Distribuida(int id, ArrayList<Amigo> participantes, Date ini, Date fin) {
         this.id=id;
         this.reunion = new Reunion(participantes, ini, fin);
         this.observador = new Observador(reunion);
