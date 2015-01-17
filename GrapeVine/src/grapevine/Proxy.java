@@ -46,7 +46,8 @@ public class Proxy implements Persona, Serializable{
                 arrayAux.clear();
                 aux=true;
                 for (Amigo persona : personas){
-                    arrayAux.add(persona.Confirma(personas, fecha_ini));
+                        //LUIS COMITEA COMITEA
+                        //arrayAux.add(persona.Confirma(personas, fecha_ini));
                 }
                 for (Boolean bo:arrayAux){
                     aux=aux&&bo;
@@ -56,7 +57,8 @@ public class Proxy implements Persona, Serializable{
                     return false;
                 } else{
                     for (Amigo persona : personas){
-                        persona.Notifica(fecha_ini);
+                        //LUIS CAMBIALOLOLOLOLOLOOOOO
+                        //persona.Notifica(fecha_ini);
                     }
                     
                 }
