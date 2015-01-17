@@ -18,11 +18,11 @@ public class Persona_Real implements Persona, Serializable{
     private int password; //contraseña única para identificar al usuario
     private ArrayList <Pizarra_Distribuida> pizarras; // 5 - 5:05
     private Calendario calendario;
-    private ArrayList <Persona_Real> amigos;//en el uml llamado "personas"
+    private ArrayList <Amigo> amigos;//en el uml llamado "personas"
     private Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
     // CONSTRUCTOR
-    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Persona_Real> amigos)  {
+    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Amigo> amigos)  {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
         this.password = password;
@@ -73,11 +73,11 @@ public class Persona_Real implements Persona, Serializable{
         this.pizarras = pizarras;
     }
 
-    public ArrayList<Persona_Real> getAmigos() {
+    public ArrayList<Amigo> getAmigos() {
         return amigos;
     }
 
-    public void setAmigos(ArrayList<Persona_Real> amigos) {
+    public void setAmigos(ArrayList<Amigo> amigos) {
         this.amigos = amigos;
     }
 
@@ -105,14 +105,14 @@ public class Persona_Real implements Persona, Serializable{
         return true;
     }
     
-    public void AgregarContacto(Persona_Real p){
+    public void AgregarContacto(Amigo p){
         this.amigos.add(p);
     }
     
-    public boolean crearEvento(int id, ArrayList<Persona_Real> personas, Date fecha_ini, Date fecha_fin){
+    public boolean crearEvento(int id, ArrayList<Amigo> personas, Date fecha_ini, Date fecha_fin){
         if (this.GestorReunion(personas, fecha_ini, fecha_fin)){    // se le pasaraían los atributos ...
             ArrayList<Observador> observadores = new ArrayList<>();
-            for (Persona_Real persona : personas) { // la propia persona tiene que estar en la lista
+            for (Amigo persona : personas) { // la propia persona tiene que estar en la lista
                 // Creamos una pizarra (con observador sin apuntar a otros observadores) en cada persona
                 Pizarra_Distribuida evento = new Pizarra_Distribuida(id, personas, fecha_ini, fecha_fin);
                 persona.agregarEvento(evento);
