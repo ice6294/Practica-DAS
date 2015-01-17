@@ -28,10 +28,10 @@ public class Proxy implements Persona, Serializable{
     
     // MÉTODOS
     @Override
-    public boolean GestorReunion(ArrayList<Amigo> amigos, Date fecha_ini, Date fecha_fin){
+    public boolean GestorReunion(ArrayList<Amigo> personas, Date fecha_ini, Date fecha_fin){
             ArrayList<Boolean> arrayAux=new ArrayList<>();
-            for (Amigo persona : amigos){
-                arrayAux.add(amigos.HuecoCalendario(fecha_ini, fecha_fin));
+            for (Amigo persona : personas){
+                arrayAux.add(persona.HuecoCalendario(fecha_ini, fecha_fin));
             }
             boolean aux=true;
             for (Boolean bo:arrayAux){
@@ -44,8 +44,8 @@ public class Proxy implements Persona, Serializable{
             } else {
                 arrayAux.clear();
                 aux=true;
-                for (Amigo persona : amigos){
-                    arrayAux.add(persona.Confirma(amigos, fecha_ini));
+                for (Amigo persona : personas){
+                    arrayAux.add(persona.Confirma(personas, fecha_ini));
                 }
                 for (Boolean bo:arrayAux){
                     aux=aux&&bo;
@@ -54,7 +54,7 @@ public class Proxy implements Persona, Serializable{
                     System.out.println("Algún usuario ha rechazado la reunión");
                     return false;
                 } else{
-                    for (Amigo persona : amigos){
+                    for (Amigo persona : personas){
                         persona.Notifica(fecha_ini);
                     }
                     
