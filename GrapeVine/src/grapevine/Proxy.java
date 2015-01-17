@@ -31,7 +31,8 @@ public class Proxy implements Persona, Serializable{
     public boolean GestorReunion(ArrayList<Amigo> personas, Date fecha_ini, Date fecha_fin){
             ArrayList<Boolean> arrayAux=new ArrayList<>();
             for (Amigo persona : personas){
-                arrayAux.add(persona.HuecoCalendario(fecha_ini, fecha_fin));
+                //LUIS HAZLO! (Sonido de latigo *CHSSSt*)
+                //arrayAux.add(persona.HuecoCalendario(fecha_ini, fecha_fin)); 
             }
             boolean aux=true;
             for (Boolean bo:arrayAux){
