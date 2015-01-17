@@ -2,15 +2,16 @@
 package grapevine;
 
 import java.util.Objects;
+import java.net.*;
 
 public class Amigo {
     
     //Atributos
     private String nombreUsuario;
-    private int ip;
+    private InetAddress ip;
     
     //Constructor
-    public Amigo (String nU, int ip){
+    public Amigo (String nU, InetAddress ip){
         
         this.nombreUsuario = nU;
         this.ip = ip;
@@ -27,11 +28,11 @@ public class Amigo {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public int getIp() {
+    public InetAddress getIp() {
         return ip;
     }
 
-    public void setIp(int ip) {
+    public void setIp(InetAddress ip) {
         this.ip = ip;
     }
 

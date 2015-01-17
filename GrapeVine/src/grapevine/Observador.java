@@ -1,11 +1,12 @@
 package grapevine;
 
+import java.net.InetAddress;
 import java.util.ArrayList;
 
 
 public class Observador {
     
-    private ArrayList <Observador> restoParticipantes;
+    private ArrayList <InetAddress> restoParticipantes;
     private Reunion reunion;
 
     // CONSTRUCTOR
@@ -16,11 +17,11 @@ public class Observador {
 
     // GETTERS & SETTERS
 
-    public ArrayList<Observador> getRestoParticipantes() {
+    public ArrayList<InetAddress> getRestoParticipantes() {
         return restoParticipantes;
     }
 
-    public void setRestoParticipantes(ArrayList<Observador> restoParticipantes) {
+    public void setRestoParticipantes(ArrayList<InetAddress> restoParticipantes) {
         this.restoParticipantes = restoParticipantes;
     }
     
@@ -28,7 +29,8 @@ public class Observador {
     
     public void actualizaRestoParticipantes(Mensaje m){
         for (int i=0; i<restoParticipantes.size();i++){
-            restoParticipantes.get(i).actualizarme(m);
+            //CAMBIAR LUIS
+           // restoParticipantes.get(i).actualizarme(m);
         }
     }
     

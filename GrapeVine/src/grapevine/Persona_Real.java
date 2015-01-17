@@ -8,13 +8,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.InetAddress;
 import java.util.*;
 
 public class Persona_Real implements Persona, Serializable{
 
     // VARIABLES
     private String nombreUsuario;   //nombre del usuario es único y no puede repetirse
-    private int ip; //entero que simula la ip del usuario
+    private InetAddress ip; //entero que simula la ip del usuario
     private int password; //contraseña única para identificar al usuario
     private ArrayList <Pizarra_Distribuida> pizarras; // 5 - 5:05
     private Calendario calendario;
@@ -22,7 +23,7 @@ public class Persona_Real implements Persona, Serializable{
     private Proxy proxy; //Encargado de interactuar directamente con la "máquina" se encargará de la E/S
 
     // CONSTRUCTOR
-    public Persona_Real(String nombreUsuario, int ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Amigo> amigos)  {
+    public Persona_Real(String nombreUsuario, InetAddress ip, int password, ArrayList<Pizarra_Distribuida> pizarras, ArrayList<Amigo> amigos)  {
         this.nombreUsuario = nombreUsuario;
         this.ip = ip;
         this.password = password;
@@ -33,7 +34,7 @@ public class Persona_Real implements Persona, Serializable{
     public Persona_Real(Persona_Real pr){
         this.nombreUsuario = pr.getNombreUsuario();
         this.ip = pr.getIp();
-        this.password = pr.getIp();
+        this.password = pr.getPassword();
         this.pizarras = pr.getPizarras();
         this.amigos = pr.getAmigos();
         this.proxy = pr.getProxy();
@@ -49,11 +50,11 @@ public class Persona_Real implements Persona, Serializable{
         this.nombreUsuario = nombreUsuario;
     }
 
-    public int getIp() {
+    public InetAddress getIp() {
         return ip;
     }
 
-    public void setIp(int ip) {
+    public void setIp(InetAddress ip) {
         this.ip = ip;
     }
 
@@ -245,11 +246,13 @@ public class Persona_Real implements Persona, Serializable{
     
     
     // OTROS
+   
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.nombreUsuario);
-        hash = 61 * hash + this.ip;
+        hash = 43 * hash + Objects.hashCode(this.nombreUsuario);
+        hash = 43 * hash + Objects.hashCode(this.ip);
         return hash;
     }
 
